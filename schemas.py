@@ -7,6 +7,9 @@ class EmaiBase(BaseModel):
     email: EmailStr
     message : str
 
+class EmailCreate(BaseModel):
+    pass
+
 class Email(EmailBase):
     id: int
     class Config:
