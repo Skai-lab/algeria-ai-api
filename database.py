@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "postgresql://+psycopg2:@@localhost/algeria-ai"
+SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://postgres: @localhost/algeria-ai"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
