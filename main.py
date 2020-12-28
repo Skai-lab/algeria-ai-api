@@ -1,28 +1,26 @@
 from typing import Optional
 
 from fastapi import FastAPI
-from pydantic import BaseModel, EmailStr
+from . import crud, models, schemas
+from .database import SessionLocal, engine
 
+models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
-
-class Email(BaseModel):
-    fistName: str
-    lastName: str
-    email: EmailStr
-    message : str
-
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/emails/{email_id}")
-def read_item(email_id: int):
-    return {"email_id": email_id}
+@app.post("/emails/")
+def create_email(email : schemas.EmailCreate, db: Session = Depends(get_db)):
+    pass
 
-
-@app.put("/emails/{email_id}")
-def update_item(email_id: int, email: Email):
-    return { "email_id": email_id}
