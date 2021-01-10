@@ -1,2 +1,1 @@
-from crud import create_email
-from crud import get_email
+from .crud import create_email, get_email

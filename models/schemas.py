@@ -1,7 +1,7 @@
 from pydantic import BaseModel, EmailStr
 
 
-class EmaiBase(BaseModel):
+class EmailBase(BaseModel):
     fistName: str
     lastName: str
     email: EmailStr

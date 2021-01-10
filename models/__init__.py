@@ -1,2 +1,2 @@
-from models import Email
-from schemas import EmailCreate, Email
+from .models import Email
+from .schemas import EmailCreate, Email
